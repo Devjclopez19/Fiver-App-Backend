@@ -5,7 +5,7 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
 const connectDB = require("./config/db");
-// const path = require("path");
+const path = require("path");
 
 const authRoute = require("./routes/authRoutes");
 const userRoute = require("./routes/userRoutes");
@@ -25,7 +25,8 @@ connectDB();
 const app = express();
 
 // cors
-app.use(cors({origin:"http://localhost:5173", credentials: true}));
+// app.use(cors({origin:"http://localhost:3000", credentials: true}));
+app.use(cors({origin:true, credentials: true}));
 
 // middlewares
 app.use(express.json());
@@ -40,6 +41,14 @@ app.use("/api/conversations", conversationRoute);
 app.use("/api/messages", messageRoute);
 app.use("/api/reviews", reviewRoute);
 
+/*==============PRODUCTION=====================================*/
+// static files
+app.use(express.static(path.join(__dirname, './client/dist')))
+
+app.get('*', function(req, res) {
+  res.sendFile(path.join(__dirname, './client/dist/index.html'))
+})
+/*==============PRODUCTION=====================================*/
 // port
 const port = process.env.PORT || 8800;
 

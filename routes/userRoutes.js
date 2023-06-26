@@ -5,6 +5,6 @@ const { verifyToken } = require("../middlewares/jwt")
 const router = express.Router()
 
 router.delete("/:id", verifyToken, deleteUser)
-router.get("/:id", verifyToken, getUser)
+router.get("/:id", getUser)
 
 module.exports = router
