@@ -41,14 +41,6 @@ app.use("/api/conversations", conversationRoute);
 app.use("/api/messages", messageRoute);
 app.use("/api/reviews", reviewRoute);
 
-/*==============PRODUCTION=====================================*/
-// static files
-app.use(express.static(path.join(__dirname, './client/dist')))
-
-app.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname, './client/dist/index.html'))
-})
-/*==============PRODUCTION=====================================*/
 // port
 const port = process.env.PORT || 8800;
 

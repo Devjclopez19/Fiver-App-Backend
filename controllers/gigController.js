@@ -92,7 +92,7 @@ const getGigs = async (req, res) => {
   try {
     const gigs = await gigModel.find(filters).sort({[q.sort]:-1})
     if(gigs.length === 0) {
-      res.status(404).send({
+      return res.status(404).send({
         success: false,
         message: "Gigs is empty!",
       })
