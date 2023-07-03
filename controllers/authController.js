@@ -60,7 +60,7 @@ const login = async (req, res) => {
 
     res
       .cookie("accessToken", token, {
-        httpOnly: true,
+        secure: true,
       })
       .status(200)
       .send({
