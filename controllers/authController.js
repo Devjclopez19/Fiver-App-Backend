@@ -61,6 +61,7 @@ const login = async (req, res) => {
     res
       .cookie("accessToken", token, {
         secure: true,
+        SameSite: "none",
       })
       .status(200)
       .send({
