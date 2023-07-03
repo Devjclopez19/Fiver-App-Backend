@@ -26,7 +26,7 @@ const app = express();
 
 // cors
 // app.use(cors({origin:"http://localhost:3000", credentials: true}));
-app.use(cors({origin:"https://fiverr-app-fssz.onrender.com/", credentials: true}));
+app.use(cors({origin:"https://fiverr-app-fssz.onrender.com", credentials: true}));
 
 // middlewares
 app.use(express.json());
